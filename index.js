@@ -9,9 +9,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(urlencoded({ extends: false }));
 app.get("/", (req, res) => {
-  res.json({
-    message: "Hi this is Mahesh Biswas",
-  });
+  res.render("home");
 });
 mongoose
   .connect("mongodb://localhost:27017/test")
