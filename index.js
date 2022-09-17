@@ -8,9 +8,16 @@ app.set("view engine", "ejs");
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(urlencoded({ extends: false }));
+const pollController = require("./pollController");
 app.get("/", (req, res) => {
   res.render("home");
 });
+
+// app.post("/create", (req, res) => {
+//   res.render("create");
+// });
+app.get("/create", pollController.createPollGetController);
+app.post("/create", pollController.createPollPostController);
 mongoose
   .connect("mongodb://localhost:27017/test")
   .then(() => {
