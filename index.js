@@ -18,8 +18,10 @@ app.get("/", (req, res) => {
 // });
 app.get("/create", pollController.createPollGetController);
 app.post("/create", pollController.createPollPostController);
+app.get("/polls", pollController.getAllPolls);
+app.get("/polls/:id", pollController.viewPollGetController);
 mongoose
-  .connect("mongodb://localhost:27017/test")
+  .connect("mongodb://localhost:27017/express")
   .then(() => {
     app.listen(port, () => {
       console.log(`server is listen on port ${port}`);

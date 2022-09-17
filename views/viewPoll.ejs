@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>POll view</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <h1>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 offset-md-3 my-5">
+            <div class="card card-body">
+              <h5>Title: <%= poll.title %></h5>
+              <p>Description: <%= poll.description %></p>
+              <div class="my-3">
+                <h5>Result:</h5>
+                <ul class="list-group">
+                  <% for (let r of result) { %>
+                  <li class="list-group-item">
+                    <p>
+                      <%= r.name %> --->
+                      <strong> <%= r.percentage.toFixed(2) %> % </strong>
+                    </p>
+                  </li>
+                  <% } %>
+                </ul>
+              </div>
+              <div class="my-4">
+                <h5>What is Your Opinion</h5>
+                <form action="/polls/<%= poll._id %>" method="POST">
+                  <% for (let option of poll.options) { %>
+                  <div class="custom-control custom-radio">
+                    <input
+                      type="radio"
+                      name="option"
+                      id="<%= option._id %>"
+                      class="custom-control-input"
+                      value="<%= option._id %>"
+                    />
+                    <label class="custom-control-label" for="<%= option._id %>">
+                      <%= option.name %>
+                    </label>
+                  </div>
+                  <% } %>
+                  <input
+                    type="submit"
+                    value="submit Your Opinion"
+                    class="btn btn-primary"
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </h1>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+      integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
