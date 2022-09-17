@@ -3,7 +3,7 @@ const pollSchema = new Schema({
   title: {
     type: String,
     require: true,
-    trim: true,
+    trim: true /* This trim means it will remove whitespace before/after title */,
   },
   description: {
     type: String,
